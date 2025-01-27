@@ -1,3 +1,6 @@
 __pycache__/
 
 instructions.md
+
+# PyTorch
+*.pth
