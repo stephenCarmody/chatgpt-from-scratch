@@ -7,7 +7,7 @@ repos:
         language: system
         pass_filenames: false
         types: [python]
-        stages: [commit]
+        stages: [pre-commit]
 
       - id: backend-lint-fix
         name: Run backend linting fixes
@@ -15,7 +15,7 @@ repos:
         language: system
         pass_filenames: false
         types: [python]
-        stages: [commit]
+        stages: [pre-commit]
 
       - id: frontend-lint-fix
         name: Run frontend linting fixes
@@ -23,4 +23,4 @@ repos:
         language: system
         pass_filenames: false
         types: [javascript, vue]
-        stages: [commit] 
+        stages: [pre-commit] 
