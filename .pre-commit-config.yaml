@@ -1,0 +1,26 @@
+repos:
+  - repo: local
+    hooks:
+      - id: unit-tests
+        name: Run unit tests
+        entry: bash -c 'cd backend && just test-unit'
+        language: system
+        pass_filenames: false
+        types: [python]
+        stages: [commit]
+
+      - id: backend-lint-fix
+        name: Run backend linting fixes
+        entry: bash -c 'cd backend && just lint-fix'
+        language: system
+        pass_filenames: false
+        types: [python]
+        stages: [commit]
+
+      - id: frontend-lint-fix
+        name: Run frontend linting fixes
+        entry: bash -c 'cd frontend && just lint-fix'
+        language: system
+        pass_filenames: false
+        types: [javascript, vue]
+        stages: [commit] 

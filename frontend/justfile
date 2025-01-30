@@ -1,2 +1,11 @@
 serve-dev:
     npm run dev
+
+lint-check:
+    npm run lint-check
+
+lint-fix:
+    npm run lint-fix
+
+test:
+    npm run test:unit
