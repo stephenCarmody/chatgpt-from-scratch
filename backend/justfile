@@ -9,3 +9,6 @@ train-local:
 
 train-sagemaker:
     poetry run python utils/launch_sagemaker.py
+
+infer-huggingface:
+    poetry run python -m backend.model.huggingface
