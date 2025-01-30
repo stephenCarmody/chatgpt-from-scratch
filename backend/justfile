@@ -1,0 +1,11 @@
+export PYTHONPATH:="."
+
+lint-fix:
+    poetry run isort .
+    poetry run black .
+
+train-local:
+    poetry run python flows/training.py
+
+train-sagemaker:
+    poetry run python utils/launch_sagemaker.py
