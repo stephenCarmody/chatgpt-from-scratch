@@ -95,7 +95,7 @@ export default {
   width: 100%;
   padding: 0;
   margin-bottom: 1rem;
-  padding-left: 2rem;
+  padding-left: 4rem;
   padding-right: 4rem;
   margin-left: 6rem;
   margin-right: 6rem;
@@ -104,21 +104,27 @@ export default {
 .message.user {
   background-color: #efefef;
   border-radius: 16px;
-  width: 60%;
-  margin-left: auto;
+  max-width: 60%;
+  width: fit-content;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .message.assistant {
-  background-color: #f7f7f8;
+  background-color: #ffffff;
+  margin-left: auto;
 }
 
 .message-content {
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin: 0;
+  padding: 8px;
   color: #374151;
   line-height: 1.6;
+  word-break: break-word;
 }
 
 .input-area {

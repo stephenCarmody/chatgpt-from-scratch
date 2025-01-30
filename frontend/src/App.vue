@@ -52,30 +52,12 @@ export default {
         content: message
       })
 
-      try {
-        // Simulate API call - replace with actual API call
-        const response = await fetch('/api/chat', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            message: message
-          })
-        })
-
-        const data = await response.json()
-        
-        // Add assistant message
-        currentChat.messages.push({
-          id: Date.now() + 1,
-          role: 'assistant',
-          content: data.response
-        })
-      } catch (error) {
-        console.error('Error:', error)
-        // Handle error appropriately
-      }
+      // Add dummy assistant message immediately
+      currentChat.messages.push({
+        id: Date.now() + 1,
+        role: 'assistant',
+        content: 'This is a dummy response from the assistant. I am here to help you with anything you need!'
+      })
     }
   }
 }
