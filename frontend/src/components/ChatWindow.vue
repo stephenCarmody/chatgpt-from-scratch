@@ -72,7 +72,7 @@ export default {
 .messages {
   flex: 1;
   overflow-y: auto;
-  padding-bottom: 120px;
+  padding: 2rem;
 }
 
 .welcome-screen {
@@ -91,12 +91,21 @@ export default {
 
 .message {
   display: flex;
-  justify-content: left;
-  padding: 20px;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 4rem;
+  margin-left: 6rem;
+  margin-right: 6rem;
 }
 
 .message.user {
-  background-color: #ffffff;
+  background-color: #efefef;
+  border-radius: 16px;
+  width: 60%;
+  margin-left: auto;
 }
 
 .message.assistant {
@@ -104,14 +113,12 @@ export default {
 }
 
 .message-content {
-  justify-content: left;
   max-width: 800px;
   width: 100%;
+  margin: 0 auto;
+  padding: 16px;
   color: #374151;
   line-height: 1.6;
-  padding-left: 5rem;
-  padding-right: 5rem;
-  padding-top: 2rem;
 }
 
 .input-area {
