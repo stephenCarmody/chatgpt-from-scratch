@@ -113,6 +113,8 @@ export default {
   flex: 1;
   overflow-y: auto;
   padding: 2rem;
+  padding-left: 15rem;
+  padding-right: 15rem;
 }
 
 .welcome-screen {
@@ -132,7 +134,7 @@ export default {
 .message {
   display: flex;
   justify-content: flex-start;
-  width: 100%;
+  width: 100ch;
   padding: 0;
   margin-bottom: 1rem;
   padding-left: 4rem;
@@ -168,7 +170,7 @@ export default {
 }
 
 .input-area {
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
