@@ -30,11 +30,17 @@ export default {
     messages: {
       type: Array,
       required: true
+    },
+    conversationHistory: {
+      type: Array,
+      required: true,
+      default: () => []
     }
   },
   data() {
     return {
       newMessage: '',
+      apiBaseUrl: 'http://localhost:8000',
     }
   },
   methods: {
@@ -43,7 +49,41 @@ export default {
 
       const message = this.newMessage.trim()
       this.newMessage = ''
-      this.$emit('send-message', message)
+      
+      try {
+        // Create the messages array with current message included
+        const updatedMessages = [
+          ...this.conversationHistory,
+          { role: 'user', content: message }
+        ];
+        
+        console.log('Sending conversation history:', updatedMessages); // Debug log
+        const response = await fetch(`${this.apiBaseUrl}/api/chat`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            messages: updatedMessages
+          }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          console.error('API Error:', errorData); // Debug log
+          throw new Error(errorData.detail || 'Failed to get response from server');
+        }
+
+        const data = await response.json();
+        console.log('API Response:', data); // Debug log
+        
+        // Emit events after successful API call
+        this.$emit('send-message', message);
+        this.$emit('receive-message', data.response);
+      } catch (error) {
+        console.error('Error details:', error); // Debug log
+        this.$emit('receive-message', 'Sorry, there was an error processing your request. Please try again.');
+      }
     }
   },
   watch: {

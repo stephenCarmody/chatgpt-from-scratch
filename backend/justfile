@@ -4,6 +4,9 @@ lint-fix:
     poetry run isort .
     poetry run black .
 
+serve-local:
+    poetry run python -m app.main
+
 train-local:
     poetry run python flows/training.py
 

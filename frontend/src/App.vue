@@ -50,14 +50,26 @@ export default {
         id: Date.now(),
         role: 'user',
         content: message
-      })
-
-      // Add dummy assistant message immediately
-      currentChat.messages.push({
-        id: Date.now() + 1,
-        role: 'assistant',
-        content: 'This is a dummy response from the assistant. I am here to help you with anything you need!'
-      })
+      });
+    },
+    async handleAssistantResponse(response) {
+      let currentChat = this.chats.find(chat => chat.id === this.currentChatId)
+      if (currentChat) {
+        currentChat.messages.push({
+          id: Date.now(),
+          role: 'assistant',
+          content: response
+        });
+      }
+    },
+    // Computed method to get conversation history
+    getConversationHistory(chatId) {
+      const chat = this.chats.find(c => c.id === chatId)
+      if (!chat) return []
+      return chat.messages.map(msg => ({
+        role: msg.role,
+        content: msg.content
+      }))
     }
   }
 }
@@ -72,7 +84,9 @@ export default {
   />
   <ChatWindow 
     :messages="currentChatId ? (chats.find(c => c.id === currentChatId)?.messages || []) : []"
+    :conversationHistory="currentChatId ? getConversationHistory(currentChatId) : []"
     @send-message="handleNewMessage"
+    @receive-message="handleAssistantResponse"
   />
 </template>
 
