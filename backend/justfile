@@ -4,6 +4,10 @@ lint-fix:
     poetry run isort .
     poetry run black .
 
+lint-check:
+    poetry run isort --check-only .
+    poetry run black --check .
+
 test-unit:
     poetry run python -m pytest tests/unit
 
