@@ -4,6 +4,9 @@ lint-fix:
     poetry run isort .
     poetry run black .
 
+test-unit:
+    poetry run python -m pytest tests/unit
+
 serve-local:
     poetry run python -m app.main
 

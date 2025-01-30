@@ -1,8 +1,10 @@
+import logging
+from typing import Dict, List
+
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from typing import List, Dict
+
 from model.huggingface import HuggingFaceInference
-import logging
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -11,12 +13,15 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 model = HuggingFaceInference()
 
+
 class Message(BaseModel):
     role: str
     content: str
 
+
 class ChatRequest(BaseModel):
     messages: List[Dict[str, str]]
+
 
 @router.post("/chat")
 async def chat(request: ChatRequest):
